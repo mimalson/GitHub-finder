@@ -65,6 +65,34 @@ function initTheme() {
   }
 }
 
+
+// Submit form
+function submitForm(e) {
+  e.preventDefault();
+
+  const githubUsername = document.getElementById('github-username').value;
+
+  fetchUser(githubUsername);
+}
+
+// Fetch user by username with github API
+async function fetchUser(username) {
+  SearchError.classList.add('hidden');
+
+  try {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    const parsedResponse = await response.json();
+
+    if (!response.ok) {
+      return SearchError.classList.remove('hidden');
+    }
+
+    return updateDOM(parsedResponse);
+  } catch (err) {
+    return console.log(err);
+  }
+}
+
 // Default user to be displayed
 fetchUser('NinjaInShade');
 
