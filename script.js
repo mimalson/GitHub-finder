@@ -133,6 +133,47 @@ function updateDOM(user) {
   userTimeJoined.dateTime = joinedAt;
   userTimeJoined.innerText = `Joined ${day} ${monthTxt} ${year}`
 
+
+
+  // If user has not set name use username
+  if (!user.name || user.name.length < 1) {
+    userName.innerText = user.login;
+  } else {
+    userName.innerText = user.name;
+  }
+  userUsername.innerText = `@${user.login}`;
+
+  // If user has not set bio display no bio text and lower opacity
+  if (!user.bio || user.bio.length < 1) {
+    userBio.classList.add('opacity-75');
+    userBio.innerText = 'This profile has no bio';
+  } else {
+    userBio.classList.remove('opacity-75');
+    userBio.innerText = user.bio;
+  }
+
+  userRepos.innerText = user.public_repos;
+  userFollowers.innerText = user.followers;
+  userFollowing.innerText = user.following;
+
+  if (!user.location || user.location.length < 1) {
+    userLocation.classList.add('opacity-50');
+    userLocation.querySelector('.user-link').innerText = 'Not Available';
+  } else {
+    userLocation.classList.remove('opacity-50');
+    userLocation.querySelector('.user-link').innerText = user.location;
+  }
+
+  if (!user.twitter_username || user.twitter_username.length < 1) {
+    userTwitter.classList.add('opacity-50');
+    userTwitter.querySelector('.user-link').innerText = 'Not Available';
+    userTwitter.querySelector('.user-link').removeAttribute('href');
+  } else {
+    userTwitter.classList.remove('opacity-50');
+    userTwitter.querySelector('.user-link').innerText = `@${user.twitter_username}`;
+    userTwitter.querySelector('.user-link').href = `https://twitter.com/${user.twitter_username}`;
+  }
+
 // Default user to be displayed
 fetchUser('NinjaInShade');
 
