@@ -19,3 +19,21 @@ function updateThemeClasses(themeToSwitchTo) {
   moonIcon.classList.remove('hidden');
   body.classList.remove('dark-theme');
 }
+
+// Switch light themes via button
+function switchTheme() {
+  // If it contains dark-theme class, we're switching to light theme
+  if (body.classList.contains('dark-theme')) {
+    ThemeSwitchTxt.innerText = 'Dark';
+
+    localStorage.setItem('theme', 'light');
+
+    return updateThemeClasses('light');
+  } else {
+    ThemeSwitchTxt.innerText = 'Light';
+
+    localStorage.setItem('theme', 'dark');
+
+    return updateThemeClasses('dark');
+  }
+}
