@@ -65,6 +65,28 @@ body.dark-theme .search-container{
     font-weight: 700;
     min-width: 80px;
 }
+
+/* Buttons */
+.btn{
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: var(--primary);
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 13px 24px;
+    font-weight: 700;
+}
+
+.btn-primary:hover{
+    background-color: var(--primary-hover);
+}
+
 .user-section{
     display: flex;
     justify-content: center;
@@ -237,6 +259,11 @@ body.dark-theme .user-section{
     .search-input{
         font-size: 0.813rem;
         margin-right: 9px;
+    }
+
+    .btn-primary{
+        font-size: 0.875rem;
+        padding: 12.5px 16px;
     }
 }
 
