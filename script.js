@@ -202,7 +202,7 @@ function updateDOM(user) {
 
 
 // Default user to be displayed
-fetchUser('Mimalson');
+fetchUser('NinjaInShade');
 
 // Default theme to be activated
 initTheme();
