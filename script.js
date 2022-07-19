@@ -174,6 +174,33 @@ function updateDOM(user) {
     userTwitter.querySelector('.user-link').href = `https://twitter.com/${user.twitter_username}`;
   }
 
+
+  if (!user.blog || user.blog.length < 1) {
+    userWebsite.classList.add('opacity-50');
+    userWebsite.querySelector('.user-link').innerText = 'Not Available';
+    userWebsite.querySelector('.user-link').removeAttribute('href');
+  } else {
+    const userWebsiteShort = user.blog.split('/')[2];
+
+    userWebsite.classList.remove('opacity-50');
+    userWebsite.querySelector('.user-link').innerText = userWebsiteShort;
+    userWebsite.querySelector('.user-link').href = user.blog;
+  }
+
+  if (!user.company || user.company.length < 1) {
+    userOrganization.classList.add('opacity-50');
+    userOrganization.querySelector('.user-link').innerText = 'Not Available';
+    userOrganization.querySelector('.user-link').removeAttribute('href');
+  } else {
+    const userOrganizationWithoutAt = user.company.split('@')[1];
+
+    userOrganization.classList.remove('opacity-50');
+    userOrganization.querySelector('.user-link').innerText = user.company;
+    userOrganization.querySelector('.user-link').href = `https://github.com/${userOrganizationWithoutAt}`;
+  }
+}
+
+
 // Default user to be displayed
 fetchUser('NinjaInShade');
 
