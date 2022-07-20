@@ -194,7 +194,7 @@ function initTheme() {
 }
 
 // Default user to be displayed
-fetchUser('NinjaInShade');
+fetchUser('Mimalson');
 
 // Default theme to be activated
 initTheme();
